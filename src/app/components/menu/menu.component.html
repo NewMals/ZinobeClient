@@ -1,0 +1,10 @@
+<nav class="navbar navbar-expand-lg navbar-ligth bg-dark">
+  <a class="navbar-brand" routerLink="/home">Inicio</a>
+  <div class="collapse navbar-collapse" id="navBarSupportedContent">
+    <ul class="navbar-nav" *ngFor="let page of pages" >
+      <li class="nav-item">
+        <a class="btn text-white" routerLink="{{page.route}}" [routerLinkActive]="'active'">{{page.title}}</a>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,3 +1,14 @@
-<router-outlet></router-outlet>
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    Usuarios
+  </div>
+  <ul class="list-group list-group-flush" *ngFor="let user of users" >
+    <li class="list-group-item">{{user.Nombre}}</li>
+  </ul>
+</div>
 
-<p>{{title}}</p>
+
+
+
+
+

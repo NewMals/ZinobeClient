@@ -1,0 +1,78 @@
+<div class="container py-md-5">
+<div class="card ">
+  <div class="card-header">
+    Usuario
+  </div>
+  <div class="card-body">
+<form>
+  <div class="form-group">
+    <label >Nombres y Apellidos</label>
+    <input type="text" class="form-control" [(ngModel)]="user.Nombre" name="nombre">
+    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+  </div>
+  <div class="form-group">
+    <label >Correo</label>
+    <input type="text" class="form-control" [(ngModel)]="user.Correo" name="correo">
+  </div>
+
+  <div class="form-group">
+    <label >Cedula</label>
+    <input type="number" class="form-control" [(ngModel)]="user.Cedula" name="cedula">
+  </div>
+
+  <div class="form-group">
+    <label >Valor Solicitado</label>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">$</span>
+      </div>
+      <input type="text" class="form-control" [(ngModel)]="user.ValorSolicitado" name="valorSolicitado">
+      <div class="input-group-append">
+        <span class="input-group-text">.00</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="input-group input-group-sm mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Fecha de Pagar</span>
+    </div>
+    <input type="text" class="form-control" [(ngModel)]="user.FechaPagar" name="nombre" >
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Estado del credito</label>
+    <div class="form-check form-check-inline">
+      <label></label>
+    </div>
+    <p class="card-text"> </p>
+    <div class="form-group mb-2">
+      <label >Aprobado</label>
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+      <label >Rechazado</label>
+    </div>
+  </div>
+
+
+  <div class="form-group row">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Pago credito</label>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" value="option1">
+        <label class="form-check-label" >Si</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" value="option2">
+        <label class="form-check-label" >No</label>
+      </div>
+  </div>
+
+
+
+
+  <button type="button" class="btn btn-success float-sm-right" (click)="CreateUser()">Guardar</button>
+</form>
+</div>
+</div>
+
+</div>
