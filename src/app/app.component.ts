@@ -5,8 +5,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-
-  title = 'Plataforma de prestamos';
   constructor() { }
 
   ngOnInit(): void {

@@ -1,0 +1,43 @@
+<div class="contanier py-md-5">
+  <div class="card">
+    <div class="card-header">
+      <h2>{{usuario.Nombre}}</h2>
+      <h5>{{usuario.Cedula}}</h5>
+      Historial de solicitudes de prestamos
+      <button
+      type="button"
+      class="btn btn-info float-right"
+      (click)="Regresar()"
+      *ngIf="solicitudes.length > 0"
+      >
+        Regresar
+      </button>
+
+    </div>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" *ngIf="solicitudes.length <= 0">
+      Por favor eliga un <a routerLink="/home">usuario</a> para ver su historial
+    </div>
+    <p >
+    </p>
+    <table class="table" *ngIf="solicitudes.length > 0">
+      <thead>
+        <tr>
+          <th scope="col"># Solicitud</th>
+          <th scope="col">Valor del Monto</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Pago</th>
+        </tr>
+      </thead>
+      <tbody  *ngFor="let solicitud of solicitudes" >
+        <tr>
+          <th>{{solicitud.solicitud.Numero}}</th>
+          <td>{{solicitud.solicitud.ValorSolicitado | currency:'USD':'symbol':'1.0'}}</td>
+          <td>{{EstadoCredito(solicitud.solicitud.EstadoCredito)}}</td>
+          <td>{{(solicitud.solicitud.PagoCredito) ? "Si" : "No"}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

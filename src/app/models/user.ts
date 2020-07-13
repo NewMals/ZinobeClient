@@ -1,9 +1,6 @@
 export class User {
+  Id: number;
   Nombre: string;
-  Cedula: number;
+  Cedula: string;
   Correo: string;
-  ValorSolicitado: number;
-  FechaPagar: Date;
-  EstadoCredito: boolean;
-  PagoCredito: boolean;
 }

@@ -15,11 +15,24 @@ export class UserService {
     return users;
   }
 
-  Create(user: User): void {
-    let users: Array<User> = new Array<User>();
-    users = this.Get();
+  GetUser(id: number): User {
+    const users: Array<User> = this.Get();
+    const user = users[ users.findIndex(i => i.Id === id)];
+    return user;
+  }
+
+  GetUserXCedula(cedula: string): User {
+    const users: Array<User> = this.Get();
+    const user = users[ users.findIndex(i => i.Cedula === cedula)];
+    return user;
+  }
+
+  Set(user: User): number {
+    const users: Array<User> = this.Get();
+    user.Id = (users.length > 0) ? users[users.length - 1].Id + 1 : 1;
     users.push(user);
     localStorage.setItem('users', JSON.stringify(users));
+    return user.Id;
   }
 
 }
