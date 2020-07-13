@@ -128,18 +128,14 @@ export class NuevaSolicitudComponent implements OnInit {
         !solicitud.solicitud.PagoCredito
       ) {
         this.mensajeError =
-          'El usuario tiene la solicitud "' +
-          solicitud.solicitud.Numero +
-          '" pendiente';
+        `El usuario tiene la solicitud "${solicitud.solicitud.Numero}" pendiente`;
         this.limpiarControles = true;
         return false;
       }
       if (solicitud.solicitud.EstadoCredito === Estado.Rechazada) {
         this.mensajeError =
-          'No se puede realizar una nueva solicitud, ya que el usuario tiene una solicitud anterior en estado ' +
-          Estado[Estado.Rechazada] +
-          ' bajo el numero ' +
-          solicitud.solicitud.Numero;
+          `No se puede realizar una nueva solicitud, ya que el usuario tiene una solicitud anterior en estado
+            ${Estado[Estado.Rechazada]}  bajo el numero ${solicitud.solicitud.Numero}`;
         this.limpiarControles = true;
         return false;
       }

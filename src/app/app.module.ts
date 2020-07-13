@@ -1,6 +1,4 @@
 import { MensajeService } from './services/mensaje.service';
-import { UserComponent } from './components/solicitudes/user/user.component';
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +10,7 @@ import { AppComponent } from './app.component';
 import { MontoComponent } from './shared/monto/monto.component';
 import { ModalComponent } from './shared/modal/modal.component';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,6 +24,7 @@ import { CommonModule } from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     ModalModule.forRoot()
   ],
   providers: [
