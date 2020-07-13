@@ -1,6 +1,10 @@
 <div class="form-group">
   <label>Valor a solicitar: &nbsp;</label>
-  <small>Puedes solicitar tu crédito desde {{montoMinimo | currency:'USD':'symbol':'1.0'}} hasta {{montoMaximo | currency:'USD':'symbol':'1.0'}} de pesos</small>
+  <small>
+    Puedes solicitar tu crédito desde
+    {{ montoMinimo | currency: "USD":"symbol":"1.0" }} hasta
+    {{ montoMaximo | currency: "USD":"symbol":"1.0" }} de pesos
+  </small>
   <div class="row">
     <div class="col-sm">
       <input
@@ -8,15 +12,24 @@
         class="form-control"
         [(ngModel)]="montoSolicitado"
         (blur)="EmitirValor()"
-        placeholder="{{montoMinimo | currency:'USD':'symbol':'1.0'}}"
+        placeholder="{{ montoMinimo | currency: 'USD':'symbol':'1.0' }}"
         name="valorSolicitado"
         (keydown)="InputNumeros($event)"
         [disabled]="!habilitar"
       />
-      </div>
-      <div class="col-sm-4">
-        <small class="text-danger" *ngIf="montoSolicitado < montoMinimo || montoSolicitado > montoMaximo">El valor minimo es de {{montoMinimo | currency:'USD':'symbol':'1.0'}} y maximo de {{montoMaximo | currency:'USD':'symbol':'1.0'}} </small>
-        <small class="text-danger" *ngIf="montoMaximo < montoMinimo">Actualmente, el banco no tiene un monto disponible para crear una nueva solicitud</small>
-      </div>
     </div>
+    <div class="col-sm-4">
+      <small
+        class="text-danger"
+        *ngIf="montoSolicitado < montoMinimo || montoSolicitado > montoMaximo">
+          El valor minimo es de
+          {{ montoMinimo | currency: "USD":"symbol":"1.0" }} y maximo de
+          {{ montoMaximo | currency: "USD":"symbol":"1.0" }}
+      </small>
+      <small class="text-danger" *ngIf="montoMaximo < montoMinimo">
+        Actualmente, el banco no tiene un monto disponible para crear una nueva
+        solicitud
+      </small>
+    </div>
+  </div>
 </div>

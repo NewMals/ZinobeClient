@@ -1,8 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-ligth bg-info">
   <div class="collapse navbar-collapse" id="navBarSupportedContent">
-    <ul class="navbar-nav" *ngFor="let page of pages" >
+    <ul class="navbar-nav" *ngFor="let page of pages">
       <li class="nav-item">
-        <a class="btn text-white" routerLink="{{page.route}}" [routerLinkActive]="'active'">{{page.title}}</a>
+        <a
+          class="btn text-white"
+          routerLink="{{ page.route }}"
+          [routerLinkActive]="'active'"
+          >{{ page.title }}</a
+        >
       </li>
     </ul>
   </div>

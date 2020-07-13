@@ -8,27 +8,30 @@ import { User } from '../../models/user';
 @Component({
   selector: 'app-historial',
   templateUrl: './historial.component.html',
-  styleUrls: ['./historial.component.css']
+  styleUrls: ['./historial.component.css'],
 })
 export class HistorialComponent implements OnInit {
-
   estado: Estado;
   solicitudes: Array<SolicitudUsuario>;
   usuario: User;
 
-  constructor(private solicitudService: SolicitudService, private router: Router) {
+  constructor(
+    private solicitudService: SolicitudService,
+    private router: Router
+  ) {
     const state = this.router.getCurrentNavigation().extras.state;
-    if(state){
+    if (state) {
       this.usuario = state.user;
-      this.solicitudes = this.solicitudService.GetSolicitudesXUsuario(this.usuario.Id);
-    }else{
+      this.solicitudes = this.solicitudService.GetSolicitudesXUsuario(
+        this.usuario.Id
+      );
+    } else {
       this.usuario = new User();
       this.solicitudes = new Array<SolicitudUsuario>();
     }
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   EstadoCredito(id: number): any {
     return Estado[id];
@@ -38,24 +41,3 @@ export class HistorialComponent implements OnInit {
     this.router.navigate(['/solicitudes']);
   }
 }
-
-
-// import { HistorialComponent } from './historial.component';
-// import { NgModule } from '@angular/core';
-// import { CommonModule } from '@angular/common';
-// import { Routes, RouterModule } from '@angular/router';
-
-
-// const routes: Routes = [
-//  { path: 'historial', component: HistorialComponent},
-// ];
-
-// @NgModule({
-//   imports: [
-//     CommonModule,
-//     HistorialComponent,
-//     RouterModule.forChild(routes)],
-//   exports: [RouterModule]
-
-// })
-// export class HistorialModule { }

@@ -3,11 +3,15 @@
     <div class="alert alert-info" role="alert">
       <strong>Solicitud de credito actuales</strong>
     </div>
-    <div class="alert alert-warning alert-dismissible fade show" role="alert" *ngIf="solicitudes.length <= 0">
-      No se han registrado solicitudes de prestamo, por favor cree una   <a routerLink="/nuevaSolicitud">nueva solicitud</a>
+    <div
+      class="alert alert-warning alert-dismissible fade show"
+      role="alert"
+      *ngIf="solicitudes.length <= 0"
+    >
+      No se han registrado solicitudes de prestamo, por favor cree una
+      <a routerLink="/nuevaSolicitud">nueva solicitud</a>
     </div>
-    <p >
-    </p>
+    <p></p>
     <table class="table" *ngIf="solicitudes.length > 0">
       <thead>
         <tr>
@@ -20,25 +24,57 @@
           <th scope="col"></th>
         </tr>
       </thead>
-      <tbody  *ngFor="let solicitud of solicitudes" >
+      <tbody *ngFor="let solicitud of solicitudes">
         <tr>
-
-          <td>{{solicitud.usuario.Cedula}}</td>
-          <td>{{solicitud.usuario.Nombre}}</td>
-          <th>{{solicitud.solicitud.Numero}}</th>
-          <td>{{solicitud.solicitud.ValorSolicitado | currency:'USD':'symbol':'1.0'}}</td>
-          <td>{{EstadoCredito(solicitud.solicitud.EstadoCredito)}}</td>
+          <td>{{ solicitud.usuario.Cedula }}</td>
+          <td>{{ solicitud.usuario.Nombre }}</td>
+          <th>{{ solicitud.solicitud.Numero }}</th>
           <td>
-            <a class="link" [routerLink]="['/historial']" [state]="{user: solicitud.usuario}" >Historial</a>
+            {{
+              solicitud.solicitud.ValorSolicitado
+                | currency: "USD":"symbol":"1.0"
+            }}
+          </td>
+          <td>{{ EstadoCredito(solicitud.solicitud.EstadoCredito) }}</td>
+          <td>
+            <a
+              class="link"
+              [routerLink]="['/historial']"
+              [state]="{ user: solicitud.usuario }"
+              >Historial</a
+            >
           </td>
           <td>
             <div>
               <div class="row">
-                <div class="col-sm-2" *ngIf="solicitud.solicitud.EstadoCredito === 1 && !solicitud.solicitud.PagoCredito">
-                  <button class="btn btn-success float-sm-right" [disabled]="solicitud.solicitud.PagoCredito" (click)="PagarPrestamo(solicitud)">Pagar</button>
+                <div
+                  class="col-sm-2"
+                  *ngIf="
+                    solicitud.solicitud.EstadoCredito === 1 &&
+                    !solicitud.solicitud.PagoCredito
+                  "
+                >
+                  <button
+                    class="btn btn-success float-sm-right"
+                    [disabled]="solicitud.solicitud.PagoCredito"
+                    (click)="PagarPrestamo(solicitud)"
+                  >
+                    Pagar
+                  </button>
                 </div>
-                <div class="col-sm-2" *ngIf="solicitud.solicitud.EstadoCredito === 1 && solicitud.solicitud.PagoCredito">
-                  <button class="btn btn-info float-sm-right"  (click)="NuevaSolicitud(solicitud)">Nueva</button>
+                <div
+                  class="col-sm-2"
+                  *ngIf="
+                    solicitud.solicitud.EstadoCredito === 1 &&
+                    solicitud.solicitud.PagoCredito
+                  "
+                >
+                  <button
+                    class="btn btn-info float-sm-right"
+                    (click)="NuevaSolicitud(solicitud)"
+                  >
+                    Nueva
+                  </button>
                 </div>
               </div>
             </div>
@@ -48,4 +84,3 @@
     </table>
   </div>
 </div>
-

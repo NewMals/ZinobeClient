@@ -11,28 +11,33 @@ import { CapitalBaseService } from 'src/app/services/capital-base.service';
 @Component({
   selector: 'app-solicitudes-actuales',
   templateUrl: './solicitudes-actuales.component.html',
-  styleUrls: ['./solicitudes-actuales.component.css']
+  styleUrls: ['./solicitudes-actuales.component.css'],
 })
 export class SolicitudesActualesComponent implements OnInit {
-
-  estado : Estado;
+  estado: Estado;
   solicitudes: Array<SolicitudUsuario>;
 
-  constructor(private solicitudService: SolicitudService, private userService: UserService
-            , private mensajeService: MensajeService, private router: Router
-            , private montoCapital: CapitalBaseService) {
+  constructor(
+    private solicitudService: SolicitudService,
+    private userService: UserService,
+    private mensajeService: MensajeService,
+    private router: Router,
+    private montoCapital: CapitalBaseService
+  ) {
     this.solicitudes = new Array<SolicitudUsuario>();
     this.Get();
-   }
-
-  ngOnInit(): void {
-
   }
+
+  ngOnInit(): void {}
 
   Get(): void {
     const usuarios = this.userService.Get();
-    if(usuarios.length > 0) {
-      usuarios.forEach(user =>  this.solicitudes.push(this.solicitudService.GetSolicitudActualXUsuarios(user.Id)));
+    if (usuarios.length > 0) {
+      usuarios.forEach((user) =>
+        this.solicitudes.push(
+          this.solicitudService.GetSolicitudActualXUsuarios(user.Id)
+        )
+      );
     }
   }
 
@@ -40,16 +45,20 @@ export class SolicitudesActualesComponent implements OnInit {
     return Estado[id];
   }
 
-  PagarPrestamo(solicitud: SolicitudUsuario): void{
+  PagarPrestamo(solicitud: SolicitudUsuario): void {
     const title = 'Informacion';
-    const messager = 'El pago del credito con numero de solicitud ' + solicitud.solicitud.Numero
-                        + ' ha sido exitoso';
+    const messager =
+      'El pago del credito con numero de solicitud ' +
+      solicitud.solicitud.Numero +
+      ' ha sido exitoso';
     this.mensajeService.alert(title, messager).subscribe((respuest) => {});
     solicitud.solicitud.PagoCredito = true;
     this.solicitudService.SetSoliciud(solicitud.solicitud);
-    this.montoCapital.Set(this.montoCapital.Get() + +solicitud.solicitud.ValorSolicitado);
+    this.montoCapital.Set(
+      this.montoCapital.Get() + +solicitud.solicitud.ValorSolicitado
+    );
   }
-  NuevaSolicitud(solicitud: SolicitudUsuario): void{
-    this.router.navigate(['nuevaSolicitud'], {state: solicitud});
+  NuevaSolicitud(solicitud: SolicitudUsuario): void {
+    this.router.navigate(['nuevaSolicitud'], { state: solicitud });
   }
 }

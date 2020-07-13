@@ -2,35 +2,33 @@
   <div class="card">
     <div class="alert alert-info" role="alert">
       <strong>Solicitudes</strong>
-      <button
-      type="button"
-      class="btn btn-info float-right"
-      (click)="Todas();"
-      >
+      <button type="button" class="btn btn-info float-right" (click)="Todas()">
         Todas
       </button>
       <button
-      type="button"
-      class="btn btn-danger float-right"
-      (click)="Rechazadas();"
+        type="button"
+        class="btn btn-danger float-right"
+        (click)="Rechazadas()"
       >
         Rechazadas
       </button>
       <button
-      type="button"
-      class="btn btn-success float-right"
-      (click)="Aprobadas()"
+        type="button"
+        class="btn btn-success float-right"
+        (click)="Aprobadas()"
       >
         Aprobadas
       </button>
-
-
     </div>
-    <div class="alert alert-warning alert-dismissible fade show" role="alert" *ngIf="solicitudes.length <= 0">
-      No hay solicitudes de prestado <strong>{{EstadoCredito(estado)}}s</strong>
+    <div
+      class="alert alert-warning alert-dismissible fade show"
+      role="alert"
+      *ngIf="solicitudes.length <= 0"
+    >
+      No hay solicitudes de prestado
+      <strong>{{ EstadoCredito(estado) }}s</strong>
     </div>
-    <p >
-    </p>
+    <p></p>
     <table class="table" *ngIf="solicitudes.length > 0">
       <thead>
         <tr>
@@ -40,16 +38,19 @@
           <th scope="col">Pagado</th>
         </tr>
       </thead>
-      <tbody  *ngFor="let solicitud of solicitudes" >
+      <tbody *ngFor="let solicitud of solicitudes">
         <tr>
-          <th>{{solicitud.solicitud.Numero}}</th>
-          <td>{{solicitud.solicitud.ValorSolicitado | currency:'USD':'symbol':'1.0'}}</td>
-          <td>{{EstadoCredito(solicitud.solicitud.EstadoCredito)}}</td>
-          <td>{{(solicitud.solicitud.PagoCredito) ? "Si" : "No"}}
+          <th>{{ solicitud.solicitud.Numero }}</th>
+          <td>
+            {{
+              solicitud.solicitud.ValorSolicitado
+                | currency: "USD":"symbol":"1.0"
+            }}
           </td>
+          <td>{{ EstadoCredito(solicitud.solicitud.EstadoCredito) }}</td>
+          <td>{{ solicitud.solicitud.PagoCredito ? "Si" : "No" }}</td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
-

@@ -1,7 +1,4 @@
 import { Estado } from './Estado.enum';
-import { User } from './user';
-
-
 
 export class Solicitud {
   Numero: number;
