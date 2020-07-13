@@ -26,7 +26,7 @@ export class MontoSolicitarComponent implements OnInit {
   inicializar(): void{
     this.montoMaximo = this.montoCapital.Get();
     this.montoMinimo = environment.ValorMInimoAPrestar;
-    if(this.montoMinimo > this.montoMaximo){
+    if (this.montoMinimo > this.montoMaximo){
       this.habilitar = false;
     }else{
       this.habilitar = true;

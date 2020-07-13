@@ -1,17 +1,14 @@
-import { HistorialComponent } from './pages/historial/historial.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SolicitudesComponent } from './pages/solicitudes/solicitudes.component';
-import { SolicitudesActualesComponent } from './pages/solicitudes-actuales/solicitudes-actuales.component';
 import { InformeComponent } from './pages/informe/informe.component';
 
 
 const routes: Routes = [
- { path: '', redirectTo: '/home', pathMatch: 'full'},
- { path: 'home', component: SolicitudesActualesComponent},
- { path: 'historial', component: HistorialComponent},
- { path: 'solicitud', component: SolicitudesComponent},
- { path: 'informe', component: InformeComponent}
+ { path: '', redirectTo: '/solicitudes', pathMatch: 'full'},
+ { path: 'solicitudes', loadChildren: () => import('./pages/solicitudes-actuales/solicitudes-actuales.module').then(m => m.SolicitudesActualesModule) },
+ { path: 'historial', loadChildren: () => import('./pages/historial/historial.module').then(m => m.HistorialModule) },
+ { path: 'nuevaSolicitud', loadChildren: () => import('./pages/nueva-solicitud/nueva-solicitud.module').then(m => m.NuevaSolicitudModule) },
+ { path: 'informe', loadChildren: () => import('./pages/informe/informe.module').then(m => m.InformeModule) }
 ];
 
 @NgModule({

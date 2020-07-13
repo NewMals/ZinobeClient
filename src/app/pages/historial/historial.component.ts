@@ -12,7 +12,7 @@ import { User } from '../../models/user';
 })
 export class HistorialComponent implements OnInit {
 
-  estado : Estado;
+  estado: Estado;
   solicitudes: Array<SolicitudUsuario>;
   usuario: User;
 
@@ -35,6 +35,27 @@ export class HistorialComponent implements OnInit {
   }
 
   Regresar(): void {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/solicitudes']);
   }
 }
+
+
+// import { HistorialComponent } from './historial.component';
+// import { NgModule } from '@angular/core';
+// import { CommonModule } from '@angular/common';
+// import { Routes, RouterModule } from '@angular/router';
+
+
+// const routes: Routes = [
+//  { path: 'historial', component: HistorialComponent},
+// ];
+
+// @NgModule({
+//   imports: [
+//     CommonModule,
+//     HistorialComponent,
+//     RouterModule.forChild(routes)],
+//   exports: [RouterModule]
+
+// })
+// export class HistorialModule { }

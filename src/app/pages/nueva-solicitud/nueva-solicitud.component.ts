@@ -1,7 +1,7 @@
-import { environment } from './../../../environments/environment';
-import { Estado } from './../../models/Estado.enum';
+import { environment } from '../../../environments/environment';
+import { Estado } from '../../models/Estado.enum';
 import { Router} from '@angular/router';
-import { User } from './../../models/user';
+import { User } from '../../models/user';
 import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { SolicitudService } from '../../services/solicitud.service ';
@@ -11,11 +11,11 @@ import { CapitalBaseService } from 'src/app/services/capital-base.service';
 
 
 @Component({
-  selector: 'app-solicitudes',
-  templateUrl: './solicitudes.component.html',
-  styleUrls: ['./solicitudes.component.css']
+  selector: 'app-nueva-solicitud',
+  templateUrl: './nueva-solicitud.component.html',
+  styleUrls: ['./nueva-solicitud.component.css']
 })
-export class SolicitudesComponent implements OnInit {
+export class NuevaSolicitudComponent implements OnInit {
 
   solicitudUsuario: SolicitudUsuario;
   usuarioNoExistente: boolean;
@@ -32,7 +32,7 @@ export class SolicitudesComponent implements OnInit {
 
   }
   Regresar(): void {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/solicitudes']);
   }
 
   Limpiar(): void{
@@ -80,8 +80,10 @@ export class SolicitudesComponent implements OnInit {
       }
       this.solicitudUsuario.solicitud.PagoCredito = false;
       this.solicitudService.Set(this.solicitudUsuario.solicitud);
-      environment.CapitalBase = environment.CapitalBase - this.solicitudUsuario.solicitud.ValorSolicitado;
-      this.router.navigate(['/home']);
+      if (this.solicitudUsuario.solicitud.EstadoCredito === Estado.Aprobada){
+        this.montoCapital.Set(this.montoCapital.Get() - this.solicitudUsuario.solicitud.ValorSolicitado);
+      }
+      this.router.navigate(['/solicitudes']);
     }
   }
 

@@ -2,7 +2,6 @@ import { SolicitudService } from './../../services/solicitud.service ';
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { SolicitudesComponent } from 'src/app/pages/solicitudes/solicitudes.component';
 
 @Component({
   selector: 'app-modal',

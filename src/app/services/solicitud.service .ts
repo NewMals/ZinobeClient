@@ -22,7 +22,6 @@ export class SolicitudService {
 
   Set(solicitud: Solicitud): void {
     let solicitudes: Array<Solicitud> = new Array<Solicitud>();
-    console.log(solicitud);
     solicitudes = this.Get();
     solicitud.Numero = (solicitudes.length > 0) ? solicitudes[solicitudes.length - 1].Numero + 1 : 1;
     solicitudes.push(solicitud);
@@ -59,10 +58,9 @@ export class SolicitudService {
     localStorage.setItem('solicitudes', JSON.stringify(solicitudes));
   }
 
-  GetMontoSolicitadoTotal(){
+  GetMontoSolicitadoTotal(): number{
     const solitiudes = this.GetSolicitudes().filter(f => f.solicitud.EstadoCredito === Estado.Aprobada && !f.solicitud.PagoCredito);
     const montSolicitado = solitiudes.reduce((montoSolicitados, solicitud) => montoSolicitados + (+solicitud.solicitud.ValorSolicitado || 0), 0);
-    console.log(montSolicitado);
     return montSolicitado;
   }
 }

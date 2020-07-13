@@ -18,8 +18,8 @@ export class MenuComponent implements OnInit {
 
   cargarMenu(): void {
     this.pages = [
-      { title: 'Nuevo credito', route: '/solicitud' },
-      { title: 'Solicitudes', route: '/home' },
+      { title: 'Nuevo credito', route: '/nuevaSolicitud' },
+      { title: 'Solicitudes', route: '/solicitudes' },
       { title: 'Informe', route: '/informe'}
     ];
   }
